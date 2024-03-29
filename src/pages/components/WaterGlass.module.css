@@ -1,0 +1,24 @@
+/* styles/Home.module.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: height 0.5s ease-in-out;
+}
+
+.imageLoaded {
+  height: 100%;
+}
