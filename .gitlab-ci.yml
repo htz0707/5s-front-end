@@ -1,0 +1,54 @@
+image: ubuntu:18.04
+
+stages:
+  - build
+  - deploy
+
+variables:
+  IMAGE_NAME: $ROCKSHIP_REGISTRY/rockship/test5s
+
+.install_ssh:
+  before_script:
+    - test -n "$SSH_PRIVATE_KEY" || ( echo "missing variable SSH_PRIVATE_KEY" && exit 1)
+    - test -n "$SSH_HOST" || ( echo "missing variable SSH_HOST_DEVELOPMENT" && exit 1)
+    - test -n "$ROCKSHIP_REGISTRY_USERNAME" || ( echo "missing variable ROCKSHIP_REGISTRY_USERNAME" && exit 1)
+    - test -n "$ROCKSHIP_REGISTRY_PASSWORD" || ( echo "missing variable ROCKSHIP_REGISTRY_PASSWORD" && exit 1)
+    - test -n "$ROCKSHIP_REGISTRY" || ( echo "missing variable CI_REGISTRY" && exit 1)
+    - apt-get update -qq && apt-get install -qq curl
+    - which ssh-agent || apt-get install -qq openssh-client
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - touch ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.10.0-debug
+    entrypoint: ['']
+  script:
+    - echo "{\"auths\":{\"${ROCKSHIP_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${ROCKSHIP_REGISTRY_USERNAME}" "${ROCKSHIP_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --cache=true
+      --image-name-tag-with-digest-file "$IMAGE_NAME:latest"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "$IMAGE_NAME:latest"
+  only:
+    - dev
+
+deploy:
+  extends: .install_ssh
+  stage: deploy
+  script:
+    - ssh $SSH_HOST "
+      docker login -u $ROCKSHIP_REGISTRY_USERNAME -p $ROCKSHIP_REGISTRY_PASSWORD $ROCKSHIP_REGISTRY; 
+      docker pull $IMAGE_NAME:latest;
+      docker stop test5s; 
+      docker rm test5s; 
+      docker run -d --name test5s --network nginx $IMAGE_NAME:latest"
+  only:
+    - dev
