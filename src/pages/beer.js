@@ -5,9 +5,30 @@ const VideoBackground = () => {
   const videoRef = useRef(null);
   const router = useRouter();
 
-  const startVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
+  const topLeft = { x: 209, y: 396 }; // Define your four points here
+  const topRight = { x: 359, y: 396 };
+  const bottomRight = { x: 359, y: 653 };
+  const bottomLeft = { x: 209, y: 653 };
+
+  const isInsideRectangle = (point, topLeft, topRight, bottomRight, bottomLeft) => {
+    const { x, y } = point;
+    return (
+      x >= topLeft.x &&
+      x <= topRight.x &&
+      y >= topLeft.y &&
+      y <= bottomRight.y &&
+      y >= topRight.y &&
+      y <= bottomLeft.y
+    );
+  };
+
+  const startVideo = (event) => {
+    const { clientX, clientY } = event.touches ? event.touches[0] : event;
+    const point = { x: clientX, y: clientY };
+    if (isInsideRectangle(point, topLeft, topRight, bottomRight, bottomLeft)) {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
     }
   };
 
@@ -26,19 +47,14 @@ const VideoBackground = () => {
   return (
     <div
       className="video-background"
-      
       onTouchStart={startVideo}
       onTouchEnd={stopVideo}
       onMouseDown={startVideo}
       onMouseUp={stopVideo}
       onMouseLeave={stopVideo}
-      style={{
-        // width: '300px',
-      }}
     >
       <video ref={videoRef} muted playsInline onEnded={handleVideoEnd}>
-        <source src="fill.mp4" type="video/mp4" />
-        {/* Add additional source elements for other video formats if needed */}
+        <source src="fill2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* Additional content can be added over the video */}
@@ -59,7 +75,6 @@ const VideoBackground = () => {
           position: absolute;
           top: 50%;
           left: 50%;
-          
           width: 100%;
           height: 100%;
           transform: translate(-50%, -50%);
