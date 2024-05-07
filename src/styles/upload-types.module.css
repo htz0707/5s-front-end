@@ -1,0 +1,18 @@
+.layout1 {
+  background-image: url('/pic_layout.png');
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .yes {
+    margin-top: 650px;
+    height: 100px;
+  }
+
+  .no {
+    height: 100px;
+  }
+}

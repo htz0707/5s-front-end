@@ -1,0 +1,21 @@
+.layout1 {
+  background-image: url('/take_layout.jpg');
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+
+  .yes {
+    margin-top: 200px;
+    height: 40px;
+    margin-left: -105px;
+  }
+
+  .no {
+    margin-left: -60px;
+    height: 50px;
+  }
+}
