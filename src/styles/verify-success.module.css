@@ -1,0 +1,102 @@
+.layout {
+  background-image: url('/18layout.png');
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+  .yes {
+    height: 90px;
+  }
+
+  .no {
+    height: 100px;
+  }
+
+  .confirm {
+    width: 350px;
+  }
+
+  .confirmBoxFalse {
+    background-image: url('/false.png');
+    background-size: 100% 100%;
+    /* height: 300px; */
+    width: 350px;
+
+    height: 250px;
+
+    .text {
+      margin: 30px 30px 30px 60px;
+      color: red;
+      font-size: medium;
+      font-weight: 600;
+      line-height: 20px;
+    }
+  }
+
+  .confirmBoxTrue {
+    background-image: url('/true.png');
+    background-size: 100% 100%;
+    /* height: 300px; */
+    width: 350px;
+
+    height: 250px;
+
+    .text {
+      margin: 30px 30px 30px 60px;
+      color: red;
+      font-size: medium;
+      font-weight: 600;
+      line-height: 20px;
+    }
+  }
+}
+
+.layout1 {
+  background-image: url('/verify_layout.jpg');
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  .yes {
+    margin-bottom: 220px;
+    width: 250px;
+  }
+
+  .no {
+    height: 100px;
+  }
+
+  .confirm {
+    width: 350px;
+  }
+}
+
+.layout2 {
+  background-image: url('/verify_ty.png');
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+  .yes {
+    height: 90px;
+  }
+
+  .no {
+    height: 100px;
+  }
+
+  .confirm {
+    width: 350px;
+  }
+}

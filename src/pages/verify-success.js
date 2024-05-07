@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import styles from "../styles/index.module.css";
+import styles from "../styles/verify-success.module.css";
 
 const Homepage = () => {
   const router = useRouter();
