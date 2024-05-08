@@ -9,10 +9,11 @@
 
   .yes {
     margin-top: 650px;
-    height: 100px;
+    height: 80px;
   }
 
   .no {
-    height: 100px;
+    margin-top: 20px;
+    height: 80px;
   }
 }

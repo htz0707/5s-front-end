@@ -31,9 +31,9 @@ const Homepage = () => {
       {/* <img className={styles.confirm} src="/18confirm.png" alt="" /> */}
       {
         !value ? <div onClick={() => setValue(!value)} className={styles.confirmBoxFalse}>
-          <p className={styles.text}>Tôi đồng ý cho Bia Hơi Hà Nội xử lý các thông tin cá nhân của tôi cho mục đích tiếp thị, phân tích nội bộ, chăm sóc khách hàng và các mục đích khác: cụ thể xem chi tiết ở <u>Điều khoản & điều kiện chung và Thông báo điều khoản bảo vệ dữ liệu cá nhân của Chúng tôi</u>.</p>
+          <p className={styles.text}>Tôi đồng ý cho Bia Hơi Hà Nội xử lý các thông tin cá nhân của tôi cho mục đích tiếp thị, phân tích nội bộ, chăm sóc khách hàng và các mục đích khác: cụ thể xem chi tiết ở Điều khoản & điều kiện chung và <u>Thông báo điều khoản bảo vệ dữ liệu cá nhân của Chúng tôi</u>.</p>
         </div> : <div onClick={() => setValue(!value)} className={styles.confirmBoxTrue}>
-          <p className={styles.text}>Tôi đồng ý cho Bia Hơi Hà Nội xử lý các thông tin cá nhân của tôi cho mục đích tiếp thị, phân tích nội bộ, chăm sóc khách hàng và các mục đích khác: cụ thể xem chi tiết ở <u>Điều khoản & điều kiện chung và Thông báo điều khoản bảo vệ dữ liệu cá nhân của Chúng tôi</u>.</p>
+          <p className={styles.text}>Tôi đồng ý cho Bia Hơi Hà Nội xử lý các thông tin cá nhân của tôi cho mục đích tiếp thị, phân tích nội bộ, chăm sóc khách hàng và các mục đích khác: cụ thể xem chi tiết ở Điều khoản & điều kiện chung và <u>Thông báo điều khoản bảo vệ dữ liệu cá nhân của Chúng tôi</u>.</p>
         </div>
       }
     </div>
