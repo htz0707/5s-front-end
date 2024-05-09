@@ -41,7 +41,7 @@ const VideoBackground = () => {
 
   const handleVideoEnd = () => {
     // Redirect to another page when the video ends
-    router.push('/');
+    router.push('/webcam');
   };
 
   return (

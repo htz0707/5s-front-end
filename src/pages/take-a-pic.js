@@ -8,7 +8,7 @@ const Homepage = () => {
   return (
     <>
       <div className={styles.layout1}>
-        <img onClick={() => {router.push('/take-a-pic')}} className={styles.yes} src="/take1.png" alt="" />
+        <img onClick={() => {router.push('/beer')}} className={styles.yes} src="/take1.png" alt="" />
         <img className={styles.no} src="/take2.png" alt="" />
       </div>
     </>
