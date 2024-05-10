@@ -13,7 +13,7 @@ const ImagePage = () => {
     <div>
       <h1>Image Page</h1>
       <img
-        style={{ width: "370px", height: "auto" }}
+        style={{ width: "100vw", height: "auto" }}
         src={imageData}
         alt="Captured"
       />
