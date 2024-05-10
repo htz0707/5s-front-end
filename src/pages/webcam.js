@@ -9,7 +9,7 @@ const WebcamPage = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
   const [photoData, setPhotoData] = useState(null);
-  const fixedImageSrc = "/save.jpg"; // Replace with the actual path to your fixed image
+  const fixedImageSrc = "/save.png"; // Replace with the actual path to your fixed image
   const [data, setData] = useState();
 
   // useEffect(() => {
@@ -59,7 +59,7 @@ const WebcamPage = () => {
     const fixedImage = new Image();
     fixedImage.onload = function () {
       const context = canvasRef.current.getContext("2d");
-      context.drawImage(fixedImage, 0, 0, 400, 800); // Draw the fixed image onto the canvas
+      context.drawImage(fixedImage, 0, 0, height, width); // Draw the fixed image onto the canvas
     };
     fixedImage.src = fixedImageSrc;
   };
@@ -68,12 +68,12 @@ const WebcamPage = () => {
     const context = canvasRef.current.getContext("2d");
 
     // Draw the webcam video onto the canvas
-    context.drawImage(videoRef.current, 0, 0, 400, 800);
+    context.drawImage(videoRef.current, 0, 0, windowSize.width, windowSize.height);
 
     // Draw the fixed image onto the canvas
     const fixedImage = new Image();
     fixedImage.onload = function () {
-      context.drawImage(fixedImage, 0, 0, 400, 800); // Adjust position and size as needed
+      context.drawImage(fixedImage, 0, 0, windowSize.width, windowSize.height); // Adjust position and size as needed
 
       // Get the image data from the canvas
       const imageData = canvasRef.current.toDataURL("image/png");
@@ -104,12 +104,12 @@ const WebcamPage = () => {
   return (
     <div>
       <div style={{ position: "relative" }}>
-        <video ref={videoRef} width={400} height={800} autoPlay></video>
+        <video ref={videoRef} width={windowSize.width} height={windowSize.height} autoPlay></video>
         <br />
         <canvas
           ref={canvasRef}
-          width={400}
-          height={800}
+          width={windowSize.width}
+          height={windowSize.height}
           style={{
             position: "absolute",
             top: 0,
