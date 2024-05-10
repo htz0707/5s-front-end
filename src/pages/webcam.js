@@ -9,14 +9,43 @@ const WebcamPage = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
   const [photoData, setPhotoData] = useState(null);
-  const fixedImageSrc = "/frame1.png"; // Replace with the actual path to your fixed image
+  const fixedImageSrc = "/save.jpg"; // Replace with the actual path to your fixed image
   const [data, setData] = useState();
 
-  useEffect(() => {
-    startWebcam(); // Start the webcam when the component mounts
-  }, []);
+  // useEffect(() => {
+  //   startWebcam(); // Start the webcam when the component mounts
+  // }, []);
 
-  const startWebcam = () => {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Check if window is defined (client-side)
+    if (typeof window !== 'undefined') {
+      // Initial dimension setup
+      handleResize();
+      startWebcam(window.innerWidth, window.innerHeight);
+
+      // Event listener for window resize
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup function to remove event listener
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []); 
+
+  const startWebcam = (height, width) => {
     navigator.mediaDevices
       .getUserMedia({ video: true })
       .then((stream) => {
@@ -30,7 +59,7 @@ const WebcamPage = () => {
     const fixedImage = new Image();
     fixedImage.onload = function () {
       const context = canvasRef.current.getContext("2d");
-      context.drawImage(fixedImage, 250, 50, 100, 200); // Draw the fixed image onto the canvas
+      context.drawImage(fixedImage, 0, 0, height, width); // Draw the fixed image onto the canvas
     };
     fixedImage.src = fixedImageSrc;
   };
@@ -75,12 +104,12 @@ const WebcamPage = () => {
   return (
     <div>
       <div style={{ position: "relative" }}>
-        <video ref={videoRef} width="100%" height="100%" autoPlay></video>
+        <video ref={videoRef} width={windowSize.width} height={windowSize.height} autoPlay></video>
         <br />
         <canvas
           ref={canvasRef}
-          width="374.4"
-          height="280.8"
+          width={windowSize.width}
+          height={windowSize.height}
           style={{
             position: "absolute",
             top: 0,
