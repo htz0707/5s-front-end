@@ -75,12 +75,12 @@ const WebcamPage = () => {
   return (
     <div>
       <div style={{ position: "relative" }}>
-        <video ref={videoRef} width="100%" height="100%" autoPlay></video>
+        <video ref={videoRef} width="100vw" height="100vh" autoPlay></video>
         <br />
         <canvas
           ref={canvasRef}
-          width="100%"
-          height="100%"
+          width="100vw"
+          height="100vh"
           style={{
             position: "absolute",
             top: 0,
