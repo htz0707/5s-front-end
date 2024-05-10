@@ -68,12 +68,12 @@ const WebcamPage = () => {
     const context = canvasRef.current.getContext("2d");
 
     // Draw the webcam video onto the canvas
-    context.drawImage(videoRef.current, 0, 0, 374.4, 280.8);
+    context.drawImage(videoRef.current, 0, 0, windowSize.width, windowSize.height);
 
     // Draw the fixed image onto the canvas
     const fixedImage = new Image();
     fixedImage.onload = function () {
-      context.drawImage(fixedImage, 250, 50, 100, 200); // Adjust position and size as needed
+      context.drawImage(fixedImage, 0, 0, windowSize.width, windowSize.height); // Adjust position and size as needed
 
       // Get the image data from the canvas
       const imageData = canvasRef.current.toDataURL("image/png");
