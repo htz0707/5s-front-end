@@ -106,9 +106,6 @@ a {
   }
 } */
 
-html, body {
-  height: 100%;
+body {
   margin: 0;
-  padding: 0;
-  overflow: hidden; /* Optional: Prevent scrolling */
 }
