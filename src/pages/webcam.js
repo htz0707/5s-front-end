@@ -73,33 +73,33 @@ const WebcamPage = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100vw' }}>
-      <div style={{ position: 'relative', height: '100%', width: '100%' }}>
+    <div>
+      <div style={{ position: "relative" }}>
         <video ref={videoRef} width="100%" height="100%" autoPlay></video>
         <br />
         <canvas
           ref={canvasRef}
-          width="100%"
-          height="100%"
+          width="374.4"
+          height="280.8"
           style={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
-            pointerEvents: 'none',
+            pointerEvents: "none",
           }}
         ></canvas>
         <br />
         <Button type="primary" onClick={capturePhoto}>Capture Photo</Button>
         <br />
-        {photoData && (
-          <div>
-            <h2>Photo</h2>
-            <img src={photoData} alt="Captured" style={{ width: '640px', height: 'auto' }} />
-          </div>
-        )}
+
+        {/* {photoData && (
+        <div>
+          <h2>Photo</h2>
+          <img src={photoData} alt="Captured" style={{ width: '640px', height: 'auto' }} />
+        </div>
+      )} */}
       </div>
     </div>
-
   );
 };
 
