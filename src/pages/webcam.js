@@ -9,7 +9,7 @@ const WebcamPage = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
   const [photoData, setPhotoData] = useState(null);
-  const fixedImageSrc = "/bia.png"; // Replace with the actual path to your fixed image
+  const fixedImageSrc = "/frame1.png"; // Replace with the actual path to your fixed image
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -74,14 +74,13 @@ const WebcamPage = () => {
 
   return (
     <div>
-      <h1>Homepage</h1>
       <div style={{ position: "relative" }}>
         <video ref={videoRef} width="100%" height="100%" autoPlay></video>
         <br />
         <canvas
           ref={canvasRef}
-          width="374.4"
-          height="280.8"
+          width="100%"
+          height="100%"
           style={{
             position: "absolute",
             top: 0,
