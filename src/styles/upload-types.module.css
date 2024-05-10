@@ -5,15 +5,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   .yes {
-    margin-top: 650px;
+    /* margin-top: 650px; */
     height: 50px;
   }
 
   .no {
     margin-top: 20px;
+    margin-bottom: 20px;
     height: 50px;
   }
 }
