@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import styles from '../styles/beer.module.css'
 
 const VideoBackground = () => {
   const videoRef = useRef(null);
@@ -44,45 +45,34 @@ const VideoBackground = () => {
     router.push('/webcam');
   };
 
+  useEffect(() => {
+    const disableRightClick = (event) => {
+      event.preventDefault();
+    };
+
+    document.addEventListener('contextmenu', disableRightClick);
+
+    return () => {
+      document.removeEventListener('contextmenu', disableRightClick);
+    };
+  }, []);
+
+
   return (
     <div
-      className="video-background"
+      className={styles.videoBackground}
       onTouchStart={startVideo}
       onTouchEnd={stopVideo}
       onMouseDown={startVideo}
       onMouseUp={stopVideo}
       onMouseLeave={stopVideo}
     >
-      <video ref={videoRef} muted playsInline onEnded={handleVideoEnd}>
+      <video className={styles.video1} ref={videoRef} muted playsInline onEnded={handleVideoEnd} controls={false} width="100%" height="100%">
         <source src="fill2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+
       {/* Additional content can be added over the video */}
-      <div className="content">
-        {/* Your content here */}
-      </div>
-      <style jsx>{`
-        .video-background {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          overflow: hidden;
-        }
-        video {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 100%;
-          height: 100%;
-          transform: translate(-50%, -50%);
-        }
-        .content {
-          /* Add styles for your content over the video */
-        }
-      `}</style>
     </div>
   );
 };
