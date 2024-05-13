@@ -40,7 +40,7 @@ const Homepage = () => {
           name="phone"
           rules={[
             { required: true, message: 'Vui lòng nhập số điện thoại!' },
-            { pattern: /^[0-9]{10}$/, message: 'Vui lòng nhập đủ 10 chữ số!' },
+            { pattern: /^[0-9]{10}$/, message: 'Vui lòng nhập số điện thoại hợp lệ!' },
           ]}
         >
           <Input type="number" placeholder="SỐ ĐIỆN THOẠI" className={styles.customInput} />
