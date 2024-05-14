@@ -18,19 +18,19 @@ const Homepage = () => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = async () => {
+      reader.onloadend = () => {
         const base64String = reader.result;
-        const { data, error } = await supabase
-          .from('picture')
-          .insert([{ url: base64String }]);
+        // const { data, error } = await supabase
+        //   .from('picture')
+        //   .insert([{ url: base64String }]);
 
-        if (error) {
-          console.error("Error uploading image:", error);
-        } else {
-          localStorage.setItem('image_url', base64String);
-          router.push('/share');
-          setLatestImage(base64String); // Set the latest image to the newly uploaded image
-        }
+        // if (error) {
+        //   console.error("Error uploading image:", error);
+        // } else {
+          localStorage.setItem('image_url', reader.result);
+          router.push('/quotes-choose');
+          setLatestImage(reader.result); // Set the latest image to the newly uploaded image
+        // }
       };
       reader.readAsDataURL(file);
     }

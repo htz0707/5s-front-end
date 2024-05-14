@@ -1,0 +1,29 @@
+.layout2 {
+  /* background-image: url('/layout-pic-2.png');
+  background-size: 100% 100%; */
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
+
+  .inboxImage1, .inboxImage2 {
+    width: 100vw;
+    height: 100vh;
+    
+  }                      
+  
+  .inboxImage1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  
+  }
+
+  .inboxImage2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+z-index: 1;
+  }
+}

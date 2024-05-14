@@ -1,7 +1,6 @@
 // pages/_app.js
 import { Chakra_Petch } from 'next/font/google'
 import { ImageProvider } from '../context/ImageContext';
-import { SessionProvider } from 'next-auth/react';
 
 import '../styles/globals.css';
 
