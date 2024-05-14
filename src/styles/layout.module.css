@@ -1,0 +1,80 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.container {
+  width: 100vw;
+  height: calc(2.17 * 100vw);
+  position: relative;
+  background-size: cover;
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    width: calc(0.46 * 100vh);
+    height: 100vh;
+  }
+}
+
+.button {
+  background: transparent;
+  border: none;
+  /* filter: drop-shadow(3px 5px 4px #ffffff); */
+  cursor: pointer;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.input {
+  background-image: url("/signup-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 352px;
+  height: 50px;
+
+  border: none;
+  border-radius: 10px;
+  padding-inline: 16px;
+  /* filter: drop-shadow(3px 5px 4px #ffffff); */
+}
+
+.input,
+.input::placeholder {
+  font-weight: bold;
+  font-size: 14px;
+  font-style: italic;
+  color: #ee301e;
+  text-transform: uppercase;
+  font-family: var(--primary-font);
+}
+
+.input::placeholder {
+  text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em #f9e292;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.video {
+  width: 100vw;
+  height: calc(9 / 5 * 100vw);
+}
+
+@media screen and (min-width: 576px) {
+  .video {
+    width: 100vw;
+    height: 100%;
+  }
+}
