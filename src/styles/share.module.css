@@ -1,7 +1,7 @@
 .layout1 {
   background-image: url('/sharelayout.png');
   background-size: 100% 100%;
-  height: calc(85vh);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;

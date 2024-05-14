@@ -25,7 +25,7 @@ const Homepage = () => {
     <>
       <div className={styles.layout1}>
         <div className={styles.layout2}>
-          <img src="https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg" className={styles.inboxImage} alt="" />
+          <img src={localStorage.getItem('image_url')} className={styles.inboxImage} alt="" />
         </div>
         <FacebookShareButton
           // url={typeof window !== "undefined" ? window.location.href : ""}
